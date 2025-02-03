@@ -41,7 +41,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String saveUserSQL = "INSERT INTO human (name, lastName, age) VALUES (?, ?, ?)";
+        String saveUserSQL = "INSERT INTO pre_project.human (name, lastName, age) VALUES (?, ?, ?)";
         try (Connection connection = Util.connection();
              PreparedStatement preparedStatement = connection.prepareStatement(saveUserSQL)) {
 
@@ -70,7 +70,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public List<User> getAllUsers() {
         List<User> listUser = new ArrayList<>();
-        String getAllSQL = "SELECT * FROM human";
+        String getAllSQL = "SELECT * FROM pre_project.human";
 
         try (Connection connection = Util.connection()){
             Statement statement = connection.createStatement();
@@ -95,7 +95,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-        String cleanSQL = "DELETE FROM human";
+        String cleanSQL = "DELETE FROM pre_project.human";
 
         try (Connection connection = Util.connection()){
             Statement statement = connection.createStatement();
