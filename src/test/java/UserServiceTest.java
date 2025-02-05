@@ -11,7 +11,7 @@ public class UserServiceTest {
 
     private final String testName = "Ivan";
     private final String testLastName = "Ivanov";
-    private final byte testAge = 5;
+    private final Integer testAge = 5;
 
 
     @Test
@@ -51,7 +51,7 @@ public class UserServiceTest {
             }
 
         } catch (Exception e) {
-            Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e);
+            Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e.getMessage());
         }
     }
 
@@ -61,9 +61,9 @@ public class UserServiceTest {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
-            userService.removeUserById(1L);
+            userService.removeUserById(1);
         } catch (Exception e) {
-            Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
+            Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e.getMessage());
         }
     }
 
